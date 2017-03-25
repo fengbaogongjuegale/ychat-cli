@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell {
+				padding-right: 40px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 50px;
+				max-width: 50px;
+				height: 50px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 9px 15px;
+			}
+			
+			p {
+				font: "微软雅黑";
+			}
+			
+			.mui-backdrop {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 998;
+				background-color: rgba(0, 0, 0, 0);
+			}
+			
+			.liitemdiv {
+				margin-top: 5px;
+			}
+			
+			.mui-table-view .mui-media-body {
+				overflow: visible;
+			}
+			
+			.ptime {
+				margin-top: -7px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="popover" class="mui-popover">
+			<ul id="5list" class="mui-table-view">
+				<li class="mui-table-view-cell" value="groupc"><span class="mui-icon mui-icon-chatboxes"></span>发起群聊</li>
+				<li class="mui-table-view-cell" value="5frid"><span class="mui-icon mui-icon-personadd"></span>添加朋友</li>
+			</ul>
+
+		</div>
+		<div class="mui-row" style="top: -12px; left: auto; right: 0px; position:fixed; ">
+			<div class="mui-col-sm-5 mui-col-xs-5">
+
+			</div>
+
+			<div class="mui-col-sm-3 mui-col-xs-3">
+
+				<!--<a href="#popover" id="openPopover" class="mui-pull-right"></a>-->
+
+			</div>
+
+			<div class="mui-col-sm-2 mui-col-xs-2 ">
+
+				<a href="#popover" id="openPopover" class="mui-pull-right"></a>
+
+			</div>
+
+		</div>
+		<!--<button id="bbbb">aaaa</button>-->
+		<ul id="list" class="mui-table-view mui-table-view-chevron">
+			<li class="mui-table-view-cell mui-media">
+				<a>
+					<img class="mui-media-object mui-pull-left" src="images/logo.png">
+					<div class=" liitemdiv mui-media-body">一群小狼羔
+						<p class="mui-pull-right ptime">00:34</p>
+						<p class="mui-ellipsis">e-mail：我是数错数字了</p>
+
+					</div>
+
+				</a>
+			</li>
+
+			<li class="mui-table-view-cell mui-media">
+				<a>
+					<img class="mui-media-object mui-pull-left" src="images/logo.png">
+					<div class="mui-media-body liitemdiv">youknow
+						<p class="mui-pull-right ptime">01:01</p>
+						<p class="mui-ellipsis">我：你好</p>
+					</div>
+				</a>
+			</li>
+
+		</ul>
+
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.lazyload.js"></script>
+	<script src="js/mui.lazyload.img.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		var createFragment = function(count) {
+			var fragment = document.createDocumentFragment();
+			var li;
+			for(var i = 0; i < count; i++) {
+				li = document.createElement('li');
+				li.className = 'mui-table-view-cell mui-media';
+				li.innerHTML = '<a ><img class="mui-media-object mui-pull-left" data-lazyload="http://www.dcloud.io/hellomui/images/' + (i % 5 + 1) + '.jpg?version=' + Math.random() * 1000 + '"><div class="mui-media-body">主标题<p class="mui-ellipsis">列表二级标题</p></div></a>';
+				fragment.appendChild(li);
+			}
+			return fragment;
+		};
+
+		//		(function($) {
+		//			var list = document.getElementById("list");
+		//			list.appendChild(createFragment(15));
+		//			$(document).imageLazyload({
+		//				placeholder: '../images/60x60.gif'
+		//			});
+		//		})(mui);
+
+		mui.plusReady(function() {
+
+//			var bb = document.getElementById("bbbb");
+//			bb.addEventListener('tap', function() {
+//				console.log("sss");
+				//			var mainpage = plus.webview.getWebviewById("tab-webview-main.html");
+				//			if(!mainpage)console.log("nullll");
+				//				mui.fire(mainpage, 'addfri', null);
+//				var h = plus.webview.getLaunchWebview();
+//				console.log("应用首页Webview窗口：" + h.getURL());
+//				console.log(h.id);
+//				mui.fire(h, 'addfri', null);
+//				var ws = plus.webview.currentWebview();
+//				console.log("当前Webview窗口：" + ws.getURL());
+//				var wvs = plus.webview.getDisplayWebview();
+//				for(var i = 0; i < wvs.length; i++) {
+//					console.log("Display webview " + i + ": " + wvs[i].id);
+//				}
+//				var h = plus.webview.getTopWebview();
+//				console.log("应用显示栈顶的Webview窗口：" + h.getURL());
+//
+//			});
+
+			mui("#5list").on('tap', 'li', function() {
+
+				mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
+
+				var webview_style = {
+					popGesture: "close"
+				}
+
+				var i5type = this.getAttribute('value');
+				var aniShow = "pop-in";
+				var id;
+				var href;
+
+				switch(i5type) {
+					case 'groupc':
+
+						//						console.log('groupc');
+						mui.fire(plus.webview.currentWebview(), 'addli', {
+							img: "images/logo.png",
+							p1: "aaa",
+							p2: "bbb",
+							p3: "ccc"
+
+						});
+						break;
+					case '5frid':
+						id = 'input.html';
+						href = 'input.html';
+						break;
+					default:
+						break;
+				}
+				if(id && href) {
+					var webview = plus.webview.create(href, id, webview_style);
+					webview.show(aniShow, 300);
+				}
+				console.log(this.getAttribute('value'));
+
+			});
+
+			window.addEventListener('popo', function(event) {
+				console.log('popo in 1');
+				mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
+			});
+			var list = document.getElementById("list");
+			//定义列表项添加事件
+			window.addEventListener('addli', function(event) {
+				console.log('addli');
+
+				//				<li class="mui-table-view-cell mui-media">
+				//				<a>
+				//					<img class="mui-media-object mui-pull-left"  src="http://www.dcloud.io/hellomui/images/2.jpg?version=582.5089679565281">
+				//					<div class="mui-media-body" style="margin-top: 5px; overflow: visible;">youknow
+				//						<p class="mui-pull-right" style="margin-top: -7px;">01:01</p>
+				//						<p class="mui-ellipsis">我：你好</p>
+				//					</div>
+				//				</a>
+				//			</li>
+				var data = event.detail;
+				var node = document.createElement("LI");
+				node.className = 'mui-table-view-cell mui-media';
+				var anode = document.createElement("a");
+				var imgnode = document.createElement("img");
+				imgnode.className = "mui-media-object mui-pull-left";
+				imgnode.src = data['img'];
+				var divnode = document.createElement("div");
+				divnode.className = "mui-media-body liitemdiv";
+				var textnode = document.createTextNode(data['p1']);
+				divnode.appendChild(textnode);
+				var ptimenode = document.createElement("p");
+				ptimenode.className = "mui-pull-right ptime";
+				textnode = document.createTextNode(data['p2']);
+				ptimenode.appendChild(textnode);
+				var pcontentnode = document.createElement("p");
+				pcontentnode.className = "mui-ellipsis";
+				textnode = document.createTextNode(data['p3']);
+				pcontentnode.appendChild(textnode);
+
+				divnode.appendChild(ptimenode);
+				divnode.appendChild(pcontentnode);
+				anode.appendChild(imgnode);
+				anode.appendChild(divnode);
+				node.appendChild(anode);
+
+				list.appendChild(node);
+
+			});
+
+			mui("#list").on('tap', 'a', function() {
+				console.log("im");
+				var webview_style = {
+					popGesture: "close"
+				}
+				var aniShow = "pop-in";
+				var id = "im-chat.html";
+				var href = "im-chat.html";
+				var webview = plus.webview.create(href, id, webview_style);
+				webview.show(aniShow, 300);
+		
+			});
+
+		});
+	</script>
+
+</html>
