@@ -221,7 +221,9 @@
 					"card.html",
 					"index.html",
 					"indexed-list-select.html",
-					"addresslist.html"
+					"addresslist.html",
+					"person2.html",
+					"person1.html"
 				],
 				"priority": 0
 			},

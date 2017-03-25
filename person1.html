@@ -23,17 +23,17 @@
 					<li class="mui-table-view-cell mui-media">
 						<a>
 							<img class="mui-media-object mui-pull-left" src="images/logo.png">
-							<div class="mui-media-body" style="font-family: '微软雅黑';">
+							<div id="nickname" class="mui-media-body" style="font-family: '微软雅黑';">
 								小龙
 							</div>
 						</a>
 					</li>
 				</ul>
 			</div>
-			
+
 			<div style="background-color: #efeff4; height: 20px;">
 			</div>
-			
+
 			<div>
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-media">
@@ -45,10 +45,10 @@
 					</li>
 				</ul>
 			</div>
-			
+
 			<div style="background-color: #efeff4; height: 20px;">
 			</div>
-			
+
 			<div>
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-media">
@@ -67,15 +67,15 @@
 							</div>
 						</a>
 					</li>
-					
+
 				</ul>
 			</div>
-			
+
 			<div style="background-color: #efeff4; height: 20px;">
 			</div>
-			
+
 			<div class="mui-content-padded">
-				<button type="button" class="mui-btn mui-btn-primary mui-btn-block" >
+				<button id="addtomaillist" type="button" class="mui-btn mui-btn-primary mui-btn-block">
 				添加到通讯录
 			    </button>
 			</div>
@@ -84,7 +84,49 @@
 
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init({
+				preloadPages: [{
+					id: 'verify.html',
+					url: 'verify.html'
+				}]
+			})
+
+			var touid;
+			window.addEventListener('loaduserdata', function(e) {
+				touid = e.detail.idwhyuser;
+				var nickname = e.detail.nickname || uid;
+				var sex = e.detail.sex || "未设置";
+				console.log(touid);
+				document.getElementById('nickname').innerHTML = touid;
+			});
+
+			document.getElementById('addtomaillist').addEventListener('tap', function() {
+				
+				mui.fire(plus.webview.getWebviewById('verify'),'loaddata',{
+					touid:touid;
+				});
+
+				mui.openWindow({
+					id: 'verify',
+					preload: true,
+					show: {
+						aniShow: 'pop-in'
+					},
+					styles: {
+						popGesture: 'hide'
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+
+				mui.fire(plus.webview.getWebviewById('main'), 'send', {
+					type: 'addfri',
+					'from': localStorage.getItem('uid'),
+					'to': uid;
+				});
+
+			});
 		</script>
 	</body>
 

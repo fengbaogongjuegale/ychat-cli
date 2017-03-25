@@ -101,6 +101,32 @@
 				var searchinput = document.getElementById("searchinput");
 
 				var list = document.getElementById('list');
+				
+				
+				window.addEventListener('err',function (e) {
+//					console.log(list.innerHTML);
+//					console.log(JSON.stringify(e.detail));
+//					console.log(e.detail.info);
+
+							//		var node = document.createElement("LI");
+							//		var textnode = document.createTextNode("Water");
+							//		node.appendChild(textnode);
+
+							if(list.childNodes.length == 1) {
+								var node = document.createElement("div");
+								node.style.backgroundColor = "rgb(220,220,220)";
+								node.innerHTML = "<br />";
+								list.appendChild(node);
+								node = document.createElement("li");
+								node.className = "mui-table-view-cell mui-media";
+								node.innerHTML = "<br /><p>"+e.detail.info+"</p><br />";
+								list.appendChild(node);
+							}
+					
+					
+					
+				});
+				
 
 				searchinput.addEventListener('input', function() {
 					console.log(this.value);
@@ -128,43 +154,14 @@
 					    var info = {};
 					    info.searchname = searchinput.value;
 						console.log(JSON.stringify(info));
-
-						mui.post('http://192.168.1.100/whyChat/index.php/W/searchfri', info, function(data) {
-							
-							
-							
-							console.log(JSON.stringify(data));
-							//			alert('ha?');
-						}, 'json');
-
-						var isget = true;
-
-						if(isget) {
-
-						} else {
-							console.log(list.innerHTML);
-
-							//							var node = document.createElement("LI");
-							//							var textnode = document.createTextNode("Water");
-							//							node.appendChild(textnode);
-
-							if(list.childNodes.length == 1) {
-								var node = document.createElement("div");
-								node.style.backgroundColor = "rgb(220,220,220)";
-								node.innerHTML = "<br />";
-								list.appendChild(node);
-								node = document.createElement("li");
-								node.className = "mui-table-view-cell mui-media";
-								node.innerHTML = "<br /><p>该用户不存在</p><br />";
-								list.appendChild(node);
-							}
-
-						}
-
+						//激活主页面send事件
+						mui.fire(plus.webview.getWebviewById("main"),'send',{
+							type:'searchfri',
+							searchname:searchinput.value,
+							'from':localStorage.getItem('uid')							
+						});
 					});
-
 				});
-
 			});
 		</script>
 	</body>

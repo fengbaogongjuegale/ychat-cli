@@ -1,4 +1,3 @@
-
 var reconntimes = 0;
 
 // 连接服务端
@@ -14,12 +13,12 @@ function connect() {
 	// 当有消息时根据消息类型显示不同信息
 	ws.onmessage = onmessage;
 	ws.onclose = function() {
-						
+
 		console.log("连接关闭，定时重连");
-		
-		if(reconntimes<5)
-		setTimeout(connect(),5000);
-		else{
+
+		if(reconntimes < 5)
+			setTimeout(connect(), 5000);
+		else {
 			console.log("已超过自动重连次数。")
 		}
 		connect();
@@ -31,7 +30,7 @@ function connect() {
 
 // 连接建立时发送登录信息
 function onopen() {
-	reconntimes =0;
+	reconntimes = 0;
 
 	//    var login_data = '{"type":"login","client_name":"'+name.replace("", '\\"')+'","room_id":"<?php echo isset($_GET['room_id']) ? $_GET['room_id'] : 1?>"}';
 	//     var login_data ={};
@@ -46,7 +45,52 @@ function onopen() {
 // 服务端发来消息时
 function onmessage(e) {
 	console.log(e.data);
-	//      var data = eval("("+e.data+")");
+	var data = eval("(" + e.data + ")"); //强制表达式运算
+
+	switch(data['type']) {
+		case 'ping':
+			ws.send('{"type":"pong"}');
+			break;
+		case 'searchuserinfo':
+		
+		if(!data['issuccess']){
+			
+			mui.fire(plus.webview.getWebviewById('input.html'),'err',{info:data['err']});
+			
+			break;
+		}
+		
+		mui.fire(plus.webview.getWebviewById('person1.html'),'loaduserdata',{
+			idwhyuser:data['idWhyUser'],
+			nickname:data['nickname'],
+			sex:data['sex']		
+		});					
+			mui.openWindow({				
+				id: 'person1.html',
+				preload: true,
+				show: {
+					aniShow: 'pop-in'
+				},
+				styles: {
+					popGesture: 'hide'
+				},
+				waiting: {
+					autoShow: false
+				}
+			});
+
+			break;
+			case 'makefri':
+			
+			
+			
+			break;
+
+		default:
+			break;
+	}
+
+	//      var data = eval("("+e.data+")");//强制表达式运算
 	//      switch(data['type']){
 	//          // 服务端ping客户端
 	//          case 'ping':
