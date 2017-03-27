@@ -93,8 +93,9 @@
 
 			var touid;
 			window.addEventListener('loaduserdata', function(e) {
+				console.log('loaddata');
 				touid = e.detail.idwhyuser;
-				var nickname = e.detail.nickname || uid;
+				var nickname = e.detail.nickname || touid;
 				var sex = e.detail.sex || "未设置";
 				console.log(touid);
 				document.getElementById('nickname').innerHTML = touid;
@@ -102,12 +103,14 @@
 
 			document.getElementById('addtomaillist').addEventListener('tap', function() {
 				
-				mui.fire(plus.webview.getWebviewById('verify'),'loaddata',{
-					touid:touid;
+//				console.log('addtomaillist');
+				
+				mui.fire(plus.webview.getWebviewById('verify.html'),'loaddata',{
+					touid:touid
 				});
 
 				mui.openWindow({
-					id: 'verify',
+					id: 'verify.html',
 					preload: true,
 					show: {
 						aniShow: 'pop-in'
@@ -120,11 +123,11 @@
 					}
 				});
 
-				mui.fire(plus.webview.getWebviewById('main'), 'send', {
-					type: 'addfri',
-					'from': localStorage.getItem('uid'),
-					'to': uid;
-				});
+//				mui.fire(plus.webview.getWebviewById('main'), 'send', {
+//					type: 'addfri',
+//					'from': localStorage.getItem('uid'),
+//					'to': touid
+//				});
 
 			});
 		</script>

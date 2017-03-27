@@ -60,6 +60,8 @@ function onmessage(e) {
 			break;
 		}
 		
+		
+		console.log(data);
 		mui.fire(plus.webview.getWebviewById('person1.html'),'loaduserdata',{
 			idwhyuser:data['idWhyUser'],
 			nickname:data['nickname'],
@@ -81,6 +83,22 @@ function onmessage(e) {
 
 			break;
 			case 'makefri':
+			
+			mui.fire(plus.webview.getWebviewById('chatlist.html'),'makefri',{
+				title:data['from'],
+				content:data['verifycontent'],
+				imgsrc:data['imgsrc']
+			});
+			
+			
+			
+			break;
+			case 'befrid':
+			
+			mui.fire(plus.webview.getWebviewById('chatlist.html'),'addli',{
+				title:data['frisid'],
+				content:'我们已经是好友拉，一起聊天吧！'
+			});
 			
 			
 			

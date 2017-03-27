@@ -23,7 +23,7 @@
 					<li class="mui-table-view-cell mui-media">
 						<a>
 							<img class="mui-media-object mui-pull-left" src="images/logo.png">
-							<div class="mui-media-body" style="font-family: '微软雅黑';">
+							<div id="nickname" class="mui-media-body" style="font-family: '微软雅黑';">
 								小龙
 							</div>
 						</a>
@@ -75,7 +75,7 @@
 			</div>
 			
 			<div class="mui-content-padded">
-				<button type="button" class="mui-btn mui-btn-primary mui-btn-block" >
+				<button id="sendmsg" type="button" class="mui-btn mui-btn-primary mui-btn-block" >
 				发消息
 			    </button>
 			</div>
@@ -85,6 +85,22 @@
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			
+			window.addEventListener('loaduserdata', function(e) {
+				touid = e.detail.nickname;
+				var nickname = e.detail.nickname || uid;
+				var sex = e.detail.sex || "未设置";
+				console.log(touid);
+				document.getElementById('nickname').innerHTML = touid;
+			});
+			
+			document.getElementById('sendmsg').addEventListener('tap',function () {
+				
+				
+			});
+			
+			
+			
 		</script>
 	</body>
 

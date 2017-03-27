@@ -39,7 +39,7 @@
 				<p style="margin-left: 10px;">你需要发送验证申请，等待对方通过</p>
 				<div class="mui-input-row">
 
-					<input id="verifycontent" type="text" class="mui-input-clear" placeholder="你需要发送验证申请，等待对方通过">
+					<input id="verifycontent" type="text" class="mui-input-clear" placeholder="">
 
 				</div>
 
@@ -60,26 +60,29 @@
 		<script type="text/javascript">
 			mui.init()
 
-			var touid;
+			mui.plusReady(function() {
+				var touid;
 
-			window.addEventListener('loaddata', function(e) {
-				touid = e.detail.touid;				
-			})
-			
-			document.getElementById('befrid').addEventListener('tap',function  () {
-				
-				
-				mui.fire(plus.webview.getWebviewById('main'),'send',{
-					type:'addfri',
-					'fromid':localStorage.getItem('uid'),
-					'toid':touid,
-					verifycontent:document.getElementById('verifycontent').value
+				window.addEventListener('loaddata', function(e) {
+					touid = e.detail.touid;
 				})
-				
-				
-			})
-			
-			
+
+				document.getElementById('befrid').addEventListener('tap', function() {
+
+					mui.fire(plus.webview.getWebviewById('main'), 'send', {
+						type: 'addfri',
+						'fromid': localStorage.getItem('uid'),
+						'toid': touid,
+						verifycontent: document.getElementById('verifycontent').value
+					})
+					
+					mui.back();
+
+					
+
+				})
+
+			});
 		</script>
 	</body>
 

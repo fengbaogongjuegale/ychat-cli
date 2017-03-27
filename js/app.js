@@ -84,8 +84,9 @@ console.log('sss');
 		/*
 		 * 这里改成向服务器发送
 		 */
-		//要有'http://'
-		mui.post('http://192.168.1.100/whyChat/index.php/W/lo', regInfo, function(data) {
+		//要有'http://'、
+		console.log('lo');
+		mui.post('http://192.168.1.100/ychat/ychat-server/index.php/W/lo', regInfo, function(data) {
 			//							console.log(data);
 			console.log(JSON.stringify(data));
 			//			alert('ha?');

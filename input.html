@@ -101,32 +101,28 @@
 				var searchinput = document.getElementById("searchinput");
 
 				var list = document.getElementById('list');
-				
-				
-				window.addEventListener('err',function (e) {
-//					console.log(list.innerHTML);
-//					console.log(JSON.stringify(e.detail));
-//					console.log(e.detail.info);
 
-							//		var node = document.createElement("LI");
-							//		var textnode = document.createTextNode("Water");
-							//		node.appendChild(textnode);
+				window.addEventListener('err', function(e) {
+					//					console.log(list.innerHTML);
+					//					console.log(JSON.stringify(e.detail));
+					//					console.log(e.detail.info);
 
-							if(list.childNodes.length == 1) {
-								var node = document.createElement("div");
-								node.style.backgroundColor = "rgb(220,220,220)";
-								node.innerHTML = "<br />";
-								list.appendChild(node);
-								node = document.createElement("li");
-								node.className = "mui-table-view-cell mui-media";
-								node.innerHTML = "<br /><p>"+e.detail.info+"</p><br />";
-								list.appendChild(node);
-							}
-					
-					
-					
+					//		var node = document.createElement("LI");
+					//		var textnode = document.createTextNode("Water");
+					//		node.appendChild(textnode);
+
+					if(list.childNodes.length == 1) {
+						var node = document.createElement("div");
+						node.style.backgroundColor = "rgb(220,220,220)";
+						node.innerHTML = "<br />";
+						list.appendChild(node);
+						node = document.createElement("li");
+						node.className = "mui-table-view-cell mui-media";
+						node.innerHTML = "<br /><p>" + e.detail.info + "</p><br />";
+						list.appendChild(node);
+					}
+
 				});
-				
 
 				searchinput.addEventListener('input', function() {
 					console.log(this.value);
@@ -141,26 +137,28 @@
 							'<div class="mui-media-body" style="margin-top: 10px; overflow: visible;">' +
 							'搜索：' + this.value +
 							'</div>	</a></li>';
+
+						document.getElementById('libtn').addEventListener('tap', function() {
+							console.log('click libtn');
+
+							//服务器请求
+							/*
+							 * if else
+							 * 有结果跳转页面  无结果加一个 li 提示
+							 */
+							var info = {};
+							info.searchname = searchinput.value;
+							console.log(JSON.stringify(info));
+							//激活主页面send事件
+							mui.fire(plus.webview.getWebviewById("main"), 'send', {
+								type: 'searchfri',
+								searchname: searchinput.value,
+								'from': localStorage.getItem('uid')
+							});
+						});
+
 					}
 
-					document.getElementById('libtn').addEventListener('tap', function() {
-						console.log('click libtn');
-
-						//服务器请求
-						/*
-						 * if else
-						 * 有结果跳转页面  无结果加一个 li 提示
-						 */
-					    var info = {};
-					    info.searchname = searchinput.value;
-						console.log(JSON.stringify(info));
-						//激活主页面send事件
-						mui.fire(plus.webview.getWebviewById("main"),'send',{
-							type:'searchfri',
-							searchname:searchinput.value,
-							'from':localStorage.getItem('uid')							
-						});
-					});
 				});
 			});
 		</script>

@@ -99,6 +99,16 @@
 			<li class="mui-table-view-cell mui-media">
 				<a>
 					<img class="mui-media-object mui-pull-left" src="images/logo.png">
+					<div class=" liitemdiv mui-media-body">纽约客
+						<p class="mui-pull-right mui-btn mui-btn-blue">接受</p>
+						<p class="mui-ellipsis">我是纽约客，你手机关机</p>
+					</div>
+				</a>
+			</li>
+
+			<li class="mui-table-view-cell mui-media">
+				<a>
+					<img class="mui-media-object mui-pull-left" src="images/logo.png">
 					<div class=" liitemdiv mui-media-body">一群小狼羔
 						<p class="mui-pull-right ptime">00:34</p>
 						<p class="mui-ellipsis">e-mail：我是数错数字了</p>
@@ -122,11 +132,16 @@
 
 	</body>
 	<script src="js/mui.min.js"></script>
-	<script src="js/mui.lazyload.js"></script>
-	<script src="js/mui.lazyload.img.js"></script>
+
 	<script>
 		mui.init({
-			swipeBack: true //启用右滑关闭功能
+			preloadPages: [{
+				id: 'person1.html',
+				url: 'person1.html'
+			}, {
+				id: 'person2.html',
+				url: 'person2.html'
+			}]
 		});
 
 		var createFragment = function(count) {
@@ -151,26 +166,26 @@
 
 		mui.plusReady(function() {
 
-//			var bb = document.getElementById("bbbb");
-//			bb.addEventListener('tap', function() {
-//				console.log("sss");
-				//			var mainpage = plus.webview.getWebviewById("tab-webview-main.html");
-				//			if(!mainpage)console.log("nullll");
-				//				mui.fire(mainpage, 'addfri', null);
-//				var h = plus.webview.getLaunchWebview();
-//				console.log("应用首页Webview窗口：" + h.getURL());
-//				console.log(h.id);
-//				mui.fire(h, 'addfri', null);
-//				var ws = plus.webview.currentWebview();
-//				console.log("当前Webview窗口：" + ws.getURL());
-//				var wvs = plus.webview.getDisplayWebview();
-//				for(var i = 0; i < wvs.length; i++) {
-//					console.log("Display webview " + i + ": " + wvs[i].id);
-//				}
-//				var h = plus.webview.getTopWebview();
-//				console.log("应用显示栈顶的Webview窗口：" + h.getURL());
-//
-//			});
+			//			var bb = document.getElementById("bbbb");
+			//			bb.addEventListener('tap', function() {
+			//				console.log("sss");
+			//			var mainpage = plus.webview.getWebviewById("tab-webview-main.html");
+			//			if(!mainpage)console.log("nullll");
+			//				mui.fire(mainpage, 'addfri', null);
+			//				var h = plus.webview.getLaunchWebview();
+			//				console.log("应用首页Webview窗口：" + h.getURL());
+			//				console.log(h.id);
+			//				mui.fire(h, 'addfri', null);
+			//				var ws = plus.webview.currentWebview();
+			//				console.log("当前Webview窗口：" + ws.getURL());
+			//				var wvs = plus.webview.getDisplayWebview();
+			//				for(var i = 0; i < wvs.length; i++) {
+			//					console.log("Display webview " + i + ": " + wvs[i].id);
+			//				}
+			//				var h = plus.webview.getTopWebview();
+			//				console.log("应用显示栈顶的Webview窗口：" + h.getURL());
+			//
+			//			});
 
 			mui("#5list").on('tap', 'li', function() {
 
@@ -179,7 +194,7 @@
 				var webview_style = {
 					popGesture: "close"
 				}
-				
+
 				var i5type = this.getAttribute('value');
 				var aniShow = "pop-in";
 				var id;
@@ -187,14 +202,12 @@
 
 				switch(i5type) {
 					case 'groupc':
-
 						//						console.log('groupc');
 						mui.fire(plus.webview.currentWebview(), 'addli', {
 							img: "images/logo.png",
-							p1: "aaa",
-							p2: "bbb",
-							p3: "ccc"
-
+							title: "aaa",
+							time: "bbb",
+							content: "ccc",
 						});
 						break;
 					case '5frid':
@@ -239,7 +252,7 @@
 				imgnode.src = data['img'];
 				var divnode = document.createElement("div");
 				divnode.className = "mui-media-body liitemdiv";
-				var textnode = document.createTextNode(data['p1']);
+				var textnode = document.createTextNode(data['title']);
 				divnode.appendChild(textnode);
 				var ptimenode = document.createElement("p");
 				ptimenode.className = "mui-pull-right ptime";
@@ -247,7 +260,7 @@
 				ptimenode.appendChild(textnode);
 				var pcontentnode = document.createElement("p");
 				pcontentnode.className = "mui-ellipsis";
-				textnode = document.createTextNode(data['p3']);
+				textnode = document.createTextNode(data['content']);
 				pcontentnode.appendChild(textnode);
 
 				divnode.appendChild(ptimenode);
@@ -256,21 +269,103 @@
 				anode.appendChild(divnode);
 				node.appendChild(anode);
 
-				list.appendChild(node);
-
-			});
-
-			mui("#list").on('tap', 'a', function() {
-				console.log("im"); 
-				var webview_style = {
-					popGesture: "close"
+				if(list.children[0]) {　　　　
+					list.insertBefore(node, list.children[0]);
+				} else {　　　　
+					list.appendChild(node);　　
 				}
-				var aniShow = "pop-in";
-				var id = "im-chat.html";
-				var href = "im-chat.html";
-				var webview = plus.webview.create(href, id, webview_style);
-				webview.show(aniShow, 300);		
+
+				//				list.appendChild(node);
+
 			});
+
+			window.addEventListener('makefri', function(e) {
+
+				console.log('makefri');
+
+				var data = e.detail;
+				var node = document.createElement("LI");
+				node.className = 'mui-table-view-cell mui-media';
+				var anode = document.createElement("a");
+				var imgnode = document.createElement("img");
+				imgnode.className = "mui-media-object mui-pull-left";
+				imgnode.src = data['imgsrc'] || 'images/logo.png';
+				var divnode = document.createElement("div");
+				divnode.className = "mui-media-body liitemdiv";
+				var textnode = document.createTextNode(data['title']);
+				divnode.appendChild(textnode);
+				//				var ptimenode = document.createElement("p");
+				//				ptimenode.className = "mui-pull-right ptime";
+				//				textnode = document.createTextNode(data['p2']);
+				//				ptimenode.appendChild(textnode);
+
+				var btnnode = document.createElement('button');
+				btnnode.className = "mui-pull-right mui-btn mui-btn-blue";
+				textnode = document.createTextNode("接受");
+				btnnode.appendChild(textnode);
+
+				var pcontentnode = document.createElement("p");
+				pcontentnode.className = "mui-ellipsis";
+				textnode = document.createTextNode(data['content']);
+				pcontentnode.appendChild(textnode);
+
+				divnode.appendChild(btnnode);
+				divnode.appendChild(pcontentnode);
+				anode.appendChild(imgnode);
+				anode.appendChild(divnode);
+				node.appendChild(anode);
+
+				if(list.children[0]) {　　　　
+					list.insertBefore(node, list.children[0]);
+				} else {　　　　
+					list.appendChild(node);　　
+				}
+
+				btnnode.addEventListener('tap', function() {
+					
+					console.log('btnnode');
+					
+					mui.fire(plus.webview.getWebviewById('main'),'send',{
+						type:'confirmfrid',
+						'fromid':localStorage.getItem('uid'),
+						'toid':data['title'],
+						confirm:true
+					});
+					
+					mui.fire(plus.webview.getWebviewById('person2.html'), 'loaduserdata', {
+						nickname: data['title']
+					});
+
+					mui.openWindow({
+						id: 'person2.html',
+						preload: true,
+						show: {
+							aniShow: 'pop-in'
+						},
+						styles: {
+							popGesture: 'hide'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+
+				});
+
+			});
+
+//			mui("#list").on('tap', 'a', function() {
+//				console.log("im");
+//				var webview_style = {
+//					popGesture: "close"
+//				}
+//				var aniShow = "pop-in";
+//				var id = this.href;
+//				var href = this.href;
+//				var webview = plus.webview.create(href, id, webview_style);
+//				webview.show(aniShow, 300);
+//			});
+
 		});
 	</script>
 

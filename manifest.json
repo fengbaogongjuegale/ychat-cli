@@ -326,7 +326,8 @@
 			},
 			"reg.html": {
 				"resources": [
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"css/mui.min.css"
 				],
 				"refer": [
 					"login.html"
@@ -372,6 +373,51 @@
 			"person2.html": {
 				"resources": [
 					"images/logo.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"main.html": {
+				"resources": [
+					"fonts/mui-icons-extra.ttf",
+					"js/iconfont.js",
+					"fonts/mui.ttf",
+					"css/iconfont.css",
+					"css/icons-extra.css",
+					"chatlist.html",
+					"js/wsconnect.js",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"index.html",
+					"tab-webview-subpage-setting.html",
+					"addresslist.html",
+					"person2.html",
+					"person1.html",
+					"verify.html"
+				],
+				"priority": 0
+			},
+			"chatlist.html": {
+				"resources": [
+					"images/logo.png",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"input.html",
+					"im-chat.html",
+					"person2.html",
+					"person1.html"
+				],
+				"priority": 0
+			},
+			"verify.html": {
+				"resources": [
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css"
