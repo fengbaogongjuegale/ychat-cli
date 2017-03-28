@@ -153,7 +153,7 @@
 					});
 					var toMain = function() {
 						//						$.fire(mainPage, 'show', null);//触发窗口自定义事件
-						
+						console.log('tt');
 						localStorage.setItem('account',accountBox.value);
 						
 						mui.fire(mainPage, 'wsconn');
@@ -258,6 +258,7 @@
 								plus.nativeUI.toast(err);
 								return;
 							}
+							console.log('dd');
 							toMain(accountBox.value);
 						});
 					});

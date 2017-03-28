@@ -252,7 +252,8 @@
 					"js/arttmpl.js",
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"css/app.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -398,7 +399,8 @@
 					"addresslist.html",
 					"person2.html",
 					"person1.html",
-					"verify.html"
+					"verify.html",
+					"im-chat.html"
 				],
 				"priority": 0
 			},
@@ -412,7 +414,8 @@
 					"input.html",
 					"im-chat.html",
 					"person2.html",
-					"person1.html"
+					"person1.html",
+					"rim-chat.html"
 				],
 				"priority": 0
 			},
@@ -421,6 +424,20 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"rim-chat.html": {
+				"resources": [
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.imageviewer.css",
+					"js/mui.imageViewer.js",
+					"js/mui.min.js",
+					"js/arttmpl.js",
+					"images/logo.png"
 				],
 				"refer": [],
 				"priority": 0

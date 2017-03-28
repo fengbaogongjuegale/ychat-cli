@@ -44,7 +44,7 @@ function onopen() {
 
 // 服务端发来消息时
 function onmessage(e) {
-	console.log(e.data);
+	console.log('receive: '+e.data);
 	var data = eval("(" + e.data + ")"); //强制表达式运算
 
 	switch(data['type']) {
@@ -58,10 +58,8 @@ function onmessage(e) {
 			mui.fire(plus.webview.getWebviewById('input.html'),'err',{info:data['err']});
 			
 			break;
-		}
-		
-		
-		console.log(data);
+		}				
+//		console.log(data);
 		mui.fire(plus.webview.getWebviewById('person1.html'),'loaduserdata',{
 			idwhyuser:data['idWhyUser'],
 			nickname:data['nickname'],
@@ -80,25 +78,30 @@ function onmessage(e) {
 					autoShow: false
 				}
 			});
-
 			break;
-			case 'makefri':
-			
+			case 'makefri':			
 			mui.fire(plus.webview.getWebviewById('chatlist.html'),'makefri',{
 				title:data['from'],
 				content:data['verifycontent'],
 				imgsrc:data['imgsrc']
-			});
-			
-			
-			
+			});			
 			break;
 			case 'befrid':
-			
 			mui.fire(plus.webview.getWebviewById('chatlist.html'),'addli',{
 				title:data['frisid'],
 				content:'我们已经是好友拉，一起聊天吧！'
 			});
+			break;			
+			case 'chat':						
+			var fromid = data['from'];			
+			var record = eval('('+plus.storage.getItem(fromid)+')');			
+			record.push(data['content']);
+			plus.storage.setItem(fromid,JSON.stringify(record));			
+			if(plus.webview.currentWebview().id = 'im-chat.html' && localStorage.getItem('imchatid')==fromid){				
+				mui.fire('im-chat.html','receive',{});				
+			}
+			
+			mui.fire(plus.webview.getWebviewById('chatlist.html'),'chat',data);
 			
 			
 			

@@ -141,6 +141,9 @@
 			}, {
 				id: 'person2.html',
 				url: 'person2.html'
+			}, {
+				id: 'im-chat.html',
+				url: 'im-chat.html'
 			}]
 		});
 
@@ -247,9 +250,10 @@
 				var node = document.createElement("LI");
 				node.className = 'mui-table-view-cell mui-media';
 				var anode = document.createElement("a");
+				anode.id = data['title'];
 				var imgnode = document.createElement("img");
 				imgnode.className = "mui-media-object mui-pull-left";
-				imgnode.src = data['img'];
+				imgnode.src = "images/logo.png";
 				var divnode = document.createElement("div");
 				divnode.className = "mui-media-body liitemdiv";
 				var textnode = document.createTextNode(data['title']);
@@ -275,9 +279,62 @@
 					list.appendChild(node);　　
 				}
 
-				//				list.appendChild(node);
+				anode.addEventListener('tap', function() {
+
+					console.log("im");
+					var webview_style = {
+						popGesture: "close"
+					}
+					var aniShow = "pop-in";
+					var id = 'im-chat.html';
+					var href = 'im-chat.html';
+					//				var webview = plus.webview.create(href, id, webview_style);
+					//				webview.show(aniShow, 300);
+
+					mui.fire(plus.webview.getWebviewById('im-chat.html'), 'loadmsgdata', {
+						fromid: this.id
+					});
+
+					mui.openWindow({
+						id: 'im-chat.html',
+						preload: true,
+						show: {
+							aniShow: 'pop-in'
+						},
+						styles: {
+							popGesture: 'hide'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+
+				});
 
 			});
+
+			window.addEventListener('chat', function(e) {
+
+				var data = e.detail;
+				var fromid = data['from'];
+				var a = document.getElementById(fromid);
+				var content = data['content'];
+				var time = now();//从本地获取当前时间
+
+				if(a) {
+					//如果已经存在就直接修改
+					var tnode = document.querySelector("#" + fromid + ">.ptime");
+					var cnode = document.querySelector("#" + fromid + ">.mui-ellipsis");
+					tnode.innerHTML = time;
+					cnode.innerHTML = content;
+
+				} else {
+					//不存在就fire添加
+					mui.fire(plus.webview.getWebviewById('chatlist.html'), 'addli', data);
+
+				}
+
+			})
 
 			window.addEventListener('makefri', function(e) {
 
@@ -322,16 +379,16 @@
 				}
 
 				btnnode.addEventListener('tap', function() {
-					
+
 					console.log('btnnode');
-					
-					mui.fire(plus.webview.getWebviewById('main'),'send',{
-						type:'confirmfrid',
-						'fromid':localStorage.getItem('uid'),
-						'toid':data['title'],
-						confirm:true
+
+					mui.fire(plus.webview.getWebviewById('main'), 'send', {
+						type: 'confirmfrid',
+						'fromid': localStorage.getItem('uid'),
+						'toid': data['title'],
+						confirm: true
 					});
-					
+
 					mui.fire(plus.webview.getWebviewById('person2.html'), 'loaduserdata', {
 						nickname: data['title']
 					});
@@ -354,17 +411,17 @@
 
 			});
 
-//			mui("#list").on('tap', 'a', function() {
-//				console.log("im");
-//				var webview_style = {
-//					popGesture: "close"
-//				}
-//				var aniShow = "pop-in";
-//				var id = this.href;
-//				var href = this.href;
-//				var webview = plus.webview.create(href, id, webview_style);
-//				webview.show(aniShow, 300);
-//			});
+			mui("#list").on('tap', 'a', function() {
+				console.log("im");
+				var webview_style = {
+					popGesture: "close"
+				}
+				var aniShow = "pop-in";
+				var id = 'rim-chat.html';
+				var href = 'rim-chat.html';
+				var webview = plus.webview.create(href, id, webview_style);
+				webview.show(aniShow, 300);
+			});
 
 		});
 	</script>

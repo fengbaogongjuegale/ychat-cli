@@ -117,6 +117,9 @@
 					},{
 						id:'verify.html',
 						url:'verify.html'
+					},{
+						id:'im-chat.html',
+						url:'im-chat.html'
 					}
 					]
 				}
@@ -227,6 +230,8 @@
 			
 			//主页面发送事件。其他其他页面传值。
 			window.addEventListener('send',function  (e) {
+				
+				console.log('send :' + JSON.stringify(e.detail));
 												
 				ws.send(JSON.stringify(e.detail));
 				
