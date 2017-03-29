@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<style type="text/css">
+			.mui-table-view {
+				margin-top: 20px;
+			}
+		</style>
+
+	</head>
+
+	<body class="mui-fullscreen">
+
+		<div class="mui-page-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell mui-media">
+							<a class="mui-navigate-right" href="#account">
+								<img class="mui-media-object mui-pull-left head-img" id="head-img" src="images/logo.png">
+								<div class="mui-media-body">
+									Hello MUI
+									<p class='mui-ellipsis'>账号:hellomui</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a id="setting"><span class="mui-icon mui-icon-gear" style="margin-right: 10px;"></span>设置</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				preloadPages: [{
+					id: 'setting.html',
+					url: 'setting.html'
+				}]
+			});
+
+			document.getElementById('setting').addEventListener('tap', function() {
+				console.log('setting');
+				
+				if(!plus.webview.getWebviewById('setting.html')){
+					console.log('not');
+				};
+				
+				mui.openWindow({
+					url: 'setting.html',
+					id: 'setting.html',
+					show: {
+						aniShow: 'pop-in'
+					},
+					styles: {
+						popGesture: 'hide'
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

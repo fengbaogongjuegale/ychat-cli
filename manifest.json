@@ -101,7 +101,7 @@
         },
         "NativeObj":{
         	"description": "原生对象"
-        }
+        },"Share":{}
 	},
 	"plus": {
 		"splashscreen": {
@@ -400,7 +400,8 @@
 					"person2.html",
 					"person1.html",
 					"verify.html",
-					"im-chat.html"
+					"im-chat.html",
+					"me.html"
 				],
 				"priority": 0
 			},
@@ -438,6 +439,31 @@
 					"js/mui.min.js",
 					"js/arttmpl.js",
 					"images/logo.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"me.html": {
+				"resources": [
+					"images/logo.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"setting.html"
+				],
+				"priority": 0
+			},
+			"setting.html": {
+				"resources": [
+					"css/feedback.css",
+					"img/logo.png",
+					"js/feedback.js",
+					"js/mui.view.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
