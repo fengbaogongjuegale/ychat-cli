@@ -22,7 +22,7 @@
 				<div class="mui-scroll">
 					<ul class="mui-table-view mui-table-view-chevron">
 						<li class="mui-table-view-cell mui-media">
-							<a class="mui-navigate-right" href="#account">
+							<a class="mui-navigate-right" id="account">
 								<img class="mui-media-object mui-pull-left head-img" id="head-img" src="images/logo.png">
 								<div class="mui-media-body">
 									Hello MUI
@@ -60,6 +60,7 @@
 					console.log('not');
 				};
 				
+				//不能预加载
 				mui.openWindow({
 					url: 'setting.html',
 					id: 'setting.html',
@@ -73,6 +74,22 @@
 						autoShow: false
 					}
 				});
+			});
+			
+			document.getElementById('account').addEventListener('tap',function  () {
+				
+				mui.openWindow({
+				id: 'guide',
+				url: 'guide.html',
+				show: {
+					aniShow: 'fade-in',
+					duration: 300
+				},
+				waiting: {
+					autoShow: false
+				}
+			});
+											
 			});
 		</script>
 	</body>

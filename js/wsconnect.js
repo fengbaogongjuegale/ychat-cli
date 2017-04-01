@@ -92,16 +92,27 @@ function onmessage(e) {
 				content:'我们已经是好友拉，一起聊天吧！'
 			});
 			break;			
-			case 'chat':						
+			case 'chat':	
+			/*
+			 * 消息记录暂时用plus.storage（原生存储）做
+			 * 收到聊天消息分三种情况
+			 * 1.当前不在聊天页面，直接存数据
+			 * 2.当前在聊天页面，但不是对应的页面，直接存数据
+			 * 3.当前在聊天 页面且收到的消息为对应页面，fire聊天页面的receive事件（加一步），聊天页面进行消息渲染等操作
+			 */
+			
+			
+			
 			var fromid = data['from'];			
 			var record = eval('('+plus.storage.getItem(fromid)+')');			
 			record.push(data['content']);
-			plus.storage.setItem(fromid,JSON.stringify(record));			
+			plus.storage.setItem(fromid,JSON.stringify(record));
+			//判断是否为当前页面是否为聊天页面和是否为对应的聊天页面
 			if(plus.webview.currentWebview().id = 'im-chat.html' && localStorage.getItem('imchatid')==fromid){				
 				mui.fire('im-chat.html','receive',{});				
 			}
 			
-			mui.fire(plus.webview.getWebviewById('chatlist.html'),'chat',data);
+			mui.fire(plus.webview.getWebviewById('chatlist.html'),'chat',{fromid:fromid});
 			
 			
 			
