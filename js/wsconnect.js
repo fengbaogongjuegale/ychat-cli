@@ -91,6 +91,15 @@ function onmessage(e) {
 				title:data['frisid'],
 				content:'我们已经是好友拉，一起聊天吧！'
 			});
+			
+			
+			plus.storage.setItem(data['frisid'],JSON.stringify([{
+						sender: 'zs',
+						mrtype: 'text',
+						content: '我们已经是好友了，一起聊天吧',
+						'from': '小明'
+					}]));
+			
 			break;			
 			case 'chat':	
 			/*

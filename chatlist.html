@@ -294,6 +294,7 @@
 					mui.fire(plus.webview.getWebviewById('im-chat.html'), 'loadmsgdata', {
 						fromid: this.id
 					});
+					
 
 					mui.openWindow({
 						id: 'im-chat.html',
@@ -411,17 +412,17 @@
 
 			});
 
-			mui("#list").on('tap', 'a', function() {
-				console.log("im");
-				var webview_style = {
-					popGesture: "close"
-				}
-				var aniShow = "pop-in";
-				var id = 'rim-chat.html';
-				var href = 'rim-chat.html';
-				var webview = plus.webview.create(href, id, webview_style);
-				webview.show(aniShow, 300);
-			});
+//			mui("#list").on('tap', 'a', function() {
+//				console.log("im");
+//				var webview_style = {
+//					popGesture: "close"
+//				}
+//				var aniShow = "pop-in";
+//				var id = 'im-chat.html';
+//				var href = 'im-chat.html';
+//				var webview = plus.webview.create(href, id, webview_style);
+//				webview.show(aniShow, 300);
+//			});
 
 		});
 	</script>

@@ -401,7 +401,8 @@
 					"person1.html",
 					"verify.html",
 					"im-chat.html",
-					"me.html"
+					"me.html",
+					"circle.html"
 				],
 				"priority": 0
 			},
@@ -409,7 +410,8 @@
 				"resources": [
 					"images/logo.png",
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"fonts/mui.ttf"
 				],
 				"refer": [
 					"input.html",
