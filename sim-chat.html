@@ -174,7 +174,7 @@
 					<% if(item.sender=='self' ) { %>
 						<img class="msg-user-img"  src="img/me.png" alt="" />	
 					<% } else { %>
-						<img class="msg-user-img" src="images/logo.png" alt="" />
+						<img class="msg-user-img" src=<% item.logo %> alt="" />
 					<% } %>
 					<div class="msg-content">
 						<div class="msg-content-inner">
@@ -334,6 +334,7 @@
 						record.push(msg);
 						bindMsgList();
 //						toRobot(msg.content);
+
 					};
 					
 //					var toRobot = function(info) {
@@ -389,7 +390,6 @@
 							}else{
 								send({
 								sender: 'self',
-								type: 'text',
 								content: ui.boxMsgText.value.replace(new RegExp('\n', 'gm'), '<br/>')
 							});
 							ui.boxMsgText.value = '';
@@ -430,7 +430,46 @@
 						if(!focus){
 							ui.boxMsgText.blur();
 						}
-					})
+					});
+					
+					var fromid;
+
+					window.addEventListener('loadmsgdata', function(e) {
+						console.log('loaduserdata');
+						var data = e.detail;
+						fromid = data['fromid'];
+						console.log('fromid:' + fromid);
+						localStorage.setItem('imchatid', fromid);
+						record = eval('(' + plus.storage.getItem(fromid) + ')');
+//						console.log("getrecord:"+plus.storage.getItem(fromid));
+						bindMsgList();
+					});
+					
+					window.addEventListener('receive', function(e) {
+						var data = e.detail;
+
+//						var fromid = data.fromid;
+						var nickname = data.nickname;
+						var content = data.content;
+						var timestamp = data.timestamp;
+						var logo = data.logo;
+						var sender = 'n'; 
+
+//						record = plus.storage.getItem(fromid);
+
+						record.push({
+							nickname:nickname,
+							content:content,
+							timestamp:timestamp,
+							logo:logo,
+							sender:sender
+						}
+						);
+
+						bindMsgList();
+					});
+
+
 					
 				});
 			}(mui, document));
