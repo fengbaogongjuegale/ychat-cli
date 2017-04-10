@@ -81,8 +81,8 @@
 			function reSizeImg(obj) {
 				tw = obj.offsetWidth;
 				th = obj.offsetHeight;
-//								console.log('offsetwidth:' + imgWidth);
-//								console.log('offsetheight:' + imgHeight);
+				//								console.log('offsetwidth:' + imgWidth);
+				//								console.log('offsetheight:' + imgHeight);
 
 				if(th > tw) {
 					console.log('1');
@@ -97,8 +97,8 @@
 					obj.style.left = "-" + (obj.offsetWidth - obj.offsetHeight) / 2 + "px";
 
 				}
-				      console.log('width:'+obj.offsetWidth);
-				      console.log('height:'+obj.offsetHeight);
+				console.log('width:' + obj.offsetWidth);
+				console.log('height:' + obj.offsetHeight);
 				//      if(imgWidth>reWidth){
 				//          p=imgWidth/reWidth;
 				//          cHeight=Math.floor(imgHeight/p);
@@ -172,6 +172,33 @@
 			});
 
 			mui.plusReady(function() {
+				
+/**
+ * 裁剪进行压缩，裁剪压缩需要分开
+ * @param {Object} src
+ */
+				function resizeImage(src) {
+					plus.zip.compressImage({
+							src: src,
+							dst: src,
+							overwrite: true,
+							width: '100px', //这里指定了宽度，同样可以修改
+							format: 'jpg',
+							quality: 100 //图片质量不再修改，以免失真
+						},
+						function(e) {
+							console.log('压缩成功' + e.target);
+							
+//							plus.nativeUI.closeWaiting();
+//							uploadImg(e.target); //上传图片, e.target存的是本地路径！
+						},
+						function(err) {
+							plus.nativeUI.alert('未知错误！', function() {
+								mui.back();
+							});
+						}
+					);
+				}
 
 				document.getElementById("comfirmcut").addEventListener('click', function() {
 					//屏幕图片大小
@@ -199,51 +226,48 @@
 					//实际图片裁剪区域起始点
 					rt = -(yt / height1 * th);
 					rl = -(yl / width1 * tw);
-					console.log( rt + "," + rl+","+rw + "," + rh);
-					
-					console.log(Math.round(rw)+","+Math.round(rh));
-					
-					if(rt<0){
+					console.log(rt + "," + rl + "," + rw + "," + rh);
+
+					console.log(Math.round(rw) + "," + Math.round(rh));
+
+					if(rt < 0) {
 						rh += rt;
-						rt=0;
+						rt = 0;
 					}
-					if(rl<0){
+					if(rl < 0) {
 						rw += rl;
-						rl=0;
+						rl = 0;
 					}
 
-										plus.zip.compressImage({
-											src: "b3.jpg",
-											dst: "file:///storage/emulated/0/Pictures/hhh.jpg",
-											overwrite:true,
-//											width: "60px",
-//											height: "10%",
-											clip: {
-												top:  Math.round(rt) + "px",
-												left: Math.round(rl) + "px",
-												width: Math.round(rw) + "px",
-												height: Math.round(rh) + "px"
-											}
-										}, function(event) {
-											console.log(event.target);
-											plus.zip.compress({
-	src:"file:///storage/emulated/0/Pictures/hhh.jpg",
-	dst:"file:///storage/emulated/0/Pictures/hhh.jpg",
-	height:"100px"
-},function  (event) {
-	console.log(event.target);
-	console.log('su');
-},function  (event) {
-	console.log(event.code + event.message);
-	console.log('fa');
-});
+					plus.zip.compressImage({
+						src: "b3.jpg",
+						dst: "file:///storage/emulated/0/Pictures/hhh.jpg",
+						overwrite: true,
+						clip: {
+							top: Math.round(rt) + "px",
+							left: Math.round(rl) + "px",
+							width: Math.round(rw) + "px",
+							height: Math.round(rh) + "px"
+						}
+					}, function(event) {
+						console.log(event.target);
+						resizeImage(event.target);
+						//											plus.zip.compress({
+						//	src:"file:///storage/emulated/0/Pictures/hhh.jpg",
+						//	dst:"file:///storage/emulated/0/Pictures/hhh.jpg",
+						//	height:"100px"
+						//},function  (event) {
+						//	console.log(event.target);
+						//	console.log('su');
+						//},function  (event) {
+						//	console.log(event.code + event.message);
+						//	console.log('fa');
+						//});
 
+					}, function(event) {
+						console.log(event.code + event.message);
 
-					
-										}, function(event) {
-											console.log(event.code + event.message);
-					
-										});
+					});
 
 				});
 
