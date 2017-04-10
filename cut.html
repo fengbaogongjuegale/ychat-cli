@@ -88,10 +88,12 @@
 			function reSizeImg(obj) {
 				tw = obj.offsetWidth;
 				th = obj.offsetHeight;
+
 //				console.log('offsetwidth:' + obj.offsetWidth);
 //				console.log('offsetheight:' + obj.offsetHeight);
 //				console.log(parseInt(obj.height));
 //				console.log(parseInt(obj.width));
+
 				if(th > tw) {
 					console.log('1');
 					obj.style.width = "100%";
@@ -105,8 +107,9 @@
 					obj.style.left = "-" + (obj.offsetWidth - obj.offsetHeight) / 2 + "px";
 
 				}
-				//				console.log('width:' + obj.offsetWidth);
-				//				console.log('height:' + obj.offsetHeight);
+
+				console.log('width:' + obj.offsetWidth);
+				console.log('height:' + obj.offsetHeight);
 				//      if(imgWidth>reWidth){
 				//          p=imgWidth/reWidth;
 				//          cHeight=Math.floor(imgHeight/p);
@@ -218,6 +221,7 @@
 				 * 裁剪进行压缩，裁剪压缩需要分开
 				 * @param {Object} src
 				 */
+
 				function resizeImage(src) {
 					plus.zip.compressImage({
 							src: src,
@@ -231,8 +235,6 @@
 							console.log('压缩成功' + e.target);
 							mui.back();
 
-							//							plus.nativeUI.closeWaiting();
-							//							uploadImg(e.target); //上传图片, e.target存的是本地路径！
 						},
 						function(err) {
 							plus.nativeUI.alert('未知错误！', function() {
@@ -298,7 +300,6 @@
 					}, function(event) {
 						console.log(event.target);
 						resizeImage(event.target);
-						
 						
 						//											plus.zip.compress({
 						//	src:"file:///storage/emulated/0/Pictures/hhh.jpg",
