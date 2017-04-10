@@ -26,6 +26,14 @@
 				-webkit-box-shadow: 0 1px 6px #000;
 				box-shadow: 0 1px 6px #000;
 			}
+			
+			.i {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+			}
 		</style>
 	</head>
 
@@ -40,8 +48,7 @@
 				<!--上-->
 			</div>
 			<div id="bpic" style="position: absolute;height: 80vmin; width: 80vmin;top:calc((100vmax - 80vmin) / 2) ;left: 10vmin;">
-				<!--中-->
-				<img id="i" style="position: absolute;left: 0px;top: 0px;right: 0px;bottom: 0px;" onload=reSizeImg(this) src="b3.jpg" />
+				<img src="" />;
 			</div>
 			<div style=" position: absolute;height:80vmin;width: 10vmin; top:calc((100vmax - 80vmin) / 2);left:0px;background-color: #000;opacity: 0.4;z-index: 1;">
 				<!--左-->
@@ -73,7 +80,7 @@
 		</div>
 		<script src="js/mui.min.js"></script>
 		<!--加了mui会有报错-->
-		<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/touch.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			var th;
 			var tw;
@@ -81,9 +88,10 @@
 			function reSizeImg(obj) {
 				tw = obj.offsetWidth;
 				th = obj.offsetHeight;
-				//								console.log('offsetwidth:' + imgWidth);
-				//								console.log('offsetheight:' + imgHeight);
-
+//				console.log('offsetwidth:' + obj.offsetWidth);
+//				console.log('offsetheight:' + obj.offsetHeight);
+//				console.log(parseInt(obj.height));
+//				console.log(parseInt(obj.width));
 				if(th > tw) {
 					console.log('1');
 					obj.style.width = "100%";
@@ -97,8 +105,8 @@
 					obj.style.left = "-" + (obj.offsetWidth - obj.offsetHeight) / 2 + "px";
 
 				}
-				console.log('width:' + obj.offsetWidth);
-				console.log('height:' + obj.offsetHeight);
+				//				console.log('width:' + obj.offsetWidth);
+				//				console.log('height:' + obj.offsetHeight);
 				//      if(imgWidth>reWidth){
 				//          p=imgWidth/reWidth;
 				//          cHeight=Math.floor(imgHeight/p);
@@ -108,64 +116,6 @@
 				//}
 			}
 		</script>
-		<script type="text/javascript">
-			var images1 = document.getElementById('i');
-			touch.on(images1, 'pinchin', function() {
-				var height1 = images1.offsetHeight;
-				var width1 = images1.offsetWidth;
-				//				console.log('offsetwidth:' + width1);
-				//				console.log('offsetheight:' + height1);
-
-				rh = height1 * 0.99;
-				rw = width1 * 0.99;
-				//如果统一有bug，都用height或否用width
-				if(height1 < width1) {
-					images1.style.height = rh + "px";
-				} else {
-					images1.style.width = rw + "px";
-				}
-
-				//以中心为准缩小
-				//				var left1 =parseInt(images1.style.left) ;
-				//				var top1 =parseInt(images1.style.top) ;
-				//				images1.style.left = left1 + height1*0.01/2 + "px";
-				//				images1.style.top = top1 + width1*0.01/2 + "px";
-			});
-			touch.on(images1, 'pinchout', function() {
-				var height1 = images1.offsetHeight;
-				var width1 = images1.offsetWidth;
-				//				console.log('offsetwidth:' + width1);
-				//				console.log('offsetheight:' + height1);
-				rh = height1 * 1.01;
-				rw = width1 * 1.01;
-
-				//如果统一有bug，都用height或否用width
-				if(height1 < width1) {
-					images1.style.height = rh + "px";
-				} else {
-					images1.style.width = rw + "px";
-				}
-
-				//以中心为准放大
-				//				var left1 =parseInt(images1.style.left) ;
-				//				var top1 =parseInt(images1.style.top) ;
-				//				images1.style.left = left1 - height1*0.01/2 + "px";
-				//				images1.style.top = top1 - width1*0.01/2 + "px";
-			});
-			var tX;
-			var tY;
-			var objX;
-			var objY;
-			touch.on(images1, 'dragstart', function(evt) {
-				images1.style.position = "relative";
-				objX = parseInt(images1.style.left);
-				objY = parseInt(images1.style.top);
-			});
-			touch.on(images1, 'drag', function(evt) {
-				images1.style.left = (evt.distanceX + parseInt(objX)) + "px";
-				images1.style.top = (evt.distanceY + parseInt(objY)) + "px";
-			})
-		</script>
 		<script>
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
@@ -173,10 +123,101 @@
 
 			mui.plusReady(function() {
 				
-/**
- * 裁剪进行压缩，裁剪压缩需要分开
- * @param {Object} src
- */
+							window.addEventListener('loadimgsrc', function(e) {
+				var data = e.detail;
+				var imgsrc = plus.io.convertLocalFileSystemURL(data['imgsrc']);
+				console.log(imgsrc);
+				//				images1.src = imgsrc;
+				var cutareanode = document.getElementById("bpic");
+				cutareanode.removeChild(document.querySelector("#bpic > img"));
+				
+				var imgnode = document.createElement("img");
+				imgnode.src = imgsrc;
+				imgnode.className = 'i';
+				
+				//				left: 0px;top: 0px;right: 0px;bottom: 0px;
+				
+
+				
+				cutareanode.appendChild(imgnode);
+				
+				
+				/*
+				 * 渲染完毕后在操作，否则会获取不到一些属性，left，width，height等
+				 */
+				imgnode.onload = function() {
+					
+					console.log('offsetwidth:' + imgnode.offsetWidth);
+					console.log('offsetheight:' + imgnode.offsetHeight);
+
+					reSizeImg(imgnode);
+					addtouchlistener(imgnode);
+				}
+
+			});
+
+			function addtouchlistener(obj) {
+				touch.on(obj, 'pinchin', function() {
+					var height1 = obj.offsetHeight;
+					var width1 = obj.offsetWidth;
+					//				console.log('offsetwidth:' + width1);
+					//				console.log('offsetheight:' + height1);
+
+					rh = height1 * 0.99;
+					rw = width1 * 0.99;
+					//如果统一有bug，都用height或否用width
+					if(height1 < width1) {
+						obj.style.height = rh + "px";
+					} else {
+						obj.style.width = rw + "px";
+					}
+
+					//以中心为准缩小
+					//				var left1 =parseInt(images1.style.left) ;
+					//				var top1 =parseInt(images1.style.top) ;
+					//				images1.style.left = left1 + height1*0.01/2 + "px";
+					//				images1.style.top = top1 + width1*0.01/2 + "px";
+				});
+
+				touch.on(obj, 'pinchout', function() {
+					var height1 = obj.offsetHeight;
+					var width1 = obj.offsetWidth;
+					//				console.log('offsetwidth:' + width1);
+					//				console.log('offsetheight:' + height1);
+					rh = height1 * 1.01;
+					rw = width1 * 1.01;
+
+					//如果统一有bug，都用height或否用width
+					if(height1 < width1) {
+						obj.style.height = rh + "px";
+					} else {
+						obj.style.width = rw + "px";
+					}
+
+					//以中心为准放大
+					//				var left1 =parseInt(images1.style.left) ;
+					//				var top1 =parseInt(images1.style.top) ;
+					//				images1.style.left = left1 - height1*0.01/2 + "px";
+					//				images1.style.top = top1 - width1*0.01/2 + "px";
+				});
+				var objX;
+				var objY;
+				touch.on(obj, 'dragstart', function(evt) {
+					obj.style.position = "absolute";
+					objX = parseInt(obj.style.left);
+					objY = parseInt(obj.style.top);
+				});
+				touch.on(obj, 'drag', function(evt) {
+					obj.style.left = (evt.distanceX + parseInt(objX)) + "px";
+					obj.style.top = (evt.distanceY + parseInt(objY)) + "px";
+				})
+
+			}
+
+				/**
+				 * 裁剪进行压缩，裁剪压缩需要分开
+				 * @param {Object} src
+				 */
 				function resizeImage(src) {
 					plus.zip.compressImage({
 							src: src,
@@ -188,9 +229,10 @@
 						},
 						function(e) {
 							console.log('压缩成功' + e.target);
-							
-//							plus.nativeUI.closeWaiting();
-//							uploadImg(e.target); //上传图片, e.target存的是本地路径！
+							mui.back();
+
+							//							plus.nativeUI.closeWaiting();
+							//							uploadImg(e.target); //上传图片, e.target存的是本地路径！
 						},
 						function(err) {
 							plus.nativeUI.alert('未知错误！', function() {
@@ -201,6 +243,9 @@
 				}
 
 				document.getElementById("comfirmcut").addEventListener('click', function() {
+
+					var images1 = document.querySelector("#bpic > img");
+
 					//屏幕图片大小
 					var height1 = images1.offsetHeight; //yw
 					var width1 = images1.offsetWidth; //yh
@@ -238,20 +283,23 @@
 						rw += rl;
 						rl = 0;
 					}
-
+					
 					plus.zip.compressImage({
-						src: "b3.jpg",
+						src: images1.src,
 						dst: "file:///storage/emulated/0/Pictures/hhh.jpg",
 						overwrite: true,
 						clip: {
 							top: Math.round(rt) + "px",
 							left: Math.round(rl) + "px",
 							width: Math.round(rw) + "px",
-							height: Math.round(rh) + "px"
+							height: Math.round(rh) + "px",
+							quality: 100
 						}
 					}, function(event) {
 						console.log(event.target);
 						resizeImage(event.target);
+						
+						
 						//											plus.zip.compress({
 						//	src:"file:///storage/emulated/0/Pictures/hhh.jpg",
 						//	dst:"file:///storage/emulated/0/Pictures/hhh.jpg",

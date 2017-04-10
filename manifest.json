@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "login.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "me.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -450,10 +450,12 @@
 					"images/logo.png",
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"img/logo.png"
 				],
 				"refer": [
-					"setting.html"
+					"setting.html",
+					"infosetting.html"
 				],
 				"priority": 0
 			},
@@ -466,6 +468,30 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"infosetting.html": {
+				"resources": [
+					"js/mui.view.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"img/logo11.png"
+				],
+				"refer": [
+					"cut.html"
+				],
+				"priority": 0
+			},
+			"cut.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/touch.min.js",
+					"img/b3.jpg"
 				],
 				"refer": [],
 				"priority": 0

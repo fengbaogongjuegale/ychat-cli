@@ -1,259 +1,285 @@
 {
-	"index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css"
-		],
-		"refer": []
-	},
-	"tab-webview-main.html": {
-		"resources": [
-			"tab-webview-subpage-about.html",
-			"fonts/mui-icons-extra.ttf",
-			"js/iconfont.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/iconfont.css",
-			"css/mui.min.css",
-			"css/icons-extra.css",
-			"js/wsconnect.js"
-		],
-		"refer": [
-			"tab-webview-subpage-about.html",
-			"tab-webview-subpage-setting.html",
-			"tab-webview-subpage-chat.html",
-			"tab-webview-subpage-contact.html",
-			"indexed-list.html",
-			"card.html",
-			"index.html",
-			"indexed-list-select.html",
-			"addresslist.html",
-			"person2.html",
-			"person1.html"
-		]
-	},
-	"tab-webview-subpage-about.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"images/cbd.jpg",
-			"images/muwu.jpg",
-			"images/shuijiao.jpg",
-			"fonts/mui.ttf",
-			"js/mui.lazyload.js",
-			"js/mui.lazyload.img.js",
-			"im-chat.html",
-			"images/logo.png"
-		],
-		"refer": [
-			"im-chat.html",
-			"input.html"
-		]
-	},
-	"im-chat.html": {
-		"resources": [
-			"js/mui.imageViewer.js",
-			"css/mui.imageviewer.css",
-			"js/arttmpl.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/app.css"
-		],
-		"refer": []
-	},
-	"tab-webview-subpage-setting.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": [
-			"im-chat.html"
-		]
-	},
-	"indexed-list.html": {
-		"resources": [
-			"css/mui.indexedlist.css",
-			"js/mui.indexedlist.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": []
-	},
-	"card.html": {
-		"resources": [
-			"images/cbd.jpg",
-			"images/yuantiao.jpg",
-			"images/logo.png",
-			"css/app.css"
-		],
-		"refer": []
-	},
-	"tab-webview-subpage-contact.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css"
-		],
-		"refer": []
-	},
-	"indexed-list-select.html": {
-		"resources": [
-			"css/mui.indexedlist.css",
-			"js/mui.indexedlist.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": []
-	},
-	"login.html": {
-		"resources": [
-			"js/app.js",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/mui.enterfocus.js",
-			"fonts/mui.ttf"
-		],
-		"refer": [
-			"main.html",
-			"reg.html",
-			"tab-webview-main.html",
-			"addresslist.html"
-		]
-	},
-	"reg.html": {
-		"resources": [
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": [
-			"login.html"
-		]
-	},
-	"input.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"/images/cbd.jpg",
-			"/images/yuantiao.jpg",
-			"images/yuantiao.jpg",
-			"images/cbd.jpg",
-			"images/sou.png",
-			"images/logo.png"
-		],
-		"refer": []
-	},
-	"addresslist.html": {
-		"resources": [
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"fonts/mui.ttf",
-			"css/mui.indexedlist.css",
-			"js/mui.indexedlist.js"
-		],
-		"refer": []
-	},
-	"person1.html": {
-		"resources": [
-			"images/logo.png",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": []
-	},
-	"person2.html": {
-		"resources": [
-			"images/logo.png",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": []
-	},
-	"main.html": {
-		"resources": [
-			"fonts/mui-icons-extra.ttf",
-			"js/iconfont.js",
-			"fonts/mui.ttf",
-			"css/iconfont.css",
-			"css/icons-extra.css",
-			"chatlist.html",
-			"js/wsconnect.js",
-			"js/mui.min.js",
-			"css/mui.min.css"
-		],
-		"refer": [
-			"index.html",
-			"tab-webview-subpage-setting.html",
-			"addresslist.html",
-			"chatlist.html",
-			"person2.html",
-			"person1.html",
-			"verify.html",
-			"im-chat.html",
-			"me.html",
-			"circle.html"
-		]
-	},
-	"chatlist.html": {
-		"resources": [
-			"images/logo.png",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"fonts/mui.ttf"
-		],
-		"refer": [
-			"input.html",
-			"im-chat.html",
-			"person2.html",
-			"person1.html",
-			"rim-chat.html"
-		]
-	},
-	"verify.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": []
-	},
-	"rim-chat.html": {
-		"resources": [
-			"css/app.css",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/mui.imageviewer.css",
-			"js/mui.imageViewer.js",
-			"js/mui.min.js",
-			"js/arttmpl.js",
-			"images/logo.png"
-		]
-	},
-	"me.html": {
-		"resources": [
-			"images/logo.png",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		],
-		"refer": [
-			"setting.html"
-		]
-	},
-	"setting.html": {
-		"resources": [
-			"css/feedback.css",
-			"img/logo.png",
-			"js/feedback.js",
-			"js/mui.view.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	}
+  "index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "tab-webview-main.html": {
+    "resources": [
+      "tab-webview-subpage-about.html",
+      "fonts/mui-icons-extra.ttf",
+      "js/iconfont.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "css/mui.min.css",
+      "css/icons-extra.css",
+      "js/wsconnect.js"
+    ],
+    "refer": [
+      "tab-webview-subpage-about.html",
+      "tab-webview-subpage-setting.html",
+      "tab-webview-subpage-chat.html",
+      "tab-webview-subpage-contact.html",
+      "indexed-list.html",
+      "card.html",
+      "index.html",
+      "indexed-list-select.html",
+      "addresslist.html",
+      "person2.html",
+      "person1.html"
+    ]
+  },
+  "tab-webview-subpage-about.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "images/cbd.jpg",
+      "images/muwu.jpg",
+      "images/shuijiao.jpg",
+      "fonts/mui.ttf",
+      "js/mui.lazyload.js",
+      "js/mui.lazyload.img.js",
+      "im-chat.html",
+      "images/logo.png"
+    ],
+    "refer": [
+      "im-chat.html",
+      "input.html"
+    ]
+  },
+  "im-chat.html": {
+    "resources": [
+      "js/mui.imageViewer.js",
+      "css/mui.imageviewer.css",
+      "js/arttmpl.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/app.css"
+    ],
+    "refer": []
+  },
+  "tab-webview-subpage-setting.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "im-chat.html"
+    ]
+  },
+  "indexed-list.html": {
+    "resources": [
+      "css/mui.indexedlist.css",
+      "js/mui.indexedlist.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "card.html": {
+    "resources": [
+      "images/cbd.jpg",
+      "images/yuantiao.jpg",
+      "images/logo.png",
+      "css/app.css"
+    ],
+    "refer": []
+  },
+  "tab-webview-subpage-contact.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "indexed-list-select.html": {
+    "resources": [
+      "css/mui.indexedlist.css",
+      "js/mui.indexedlist.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "login.html": {
+    "resources": [
+      "js/app.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/mui.enterfocus.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "main.html",
+      "reg.html",
+      "tab-webview-main.html",
+      "addresslist.html"
+    ]
+  },
+  "reg.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "login.html"
+    ]
+  },
+  "input.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "/images/cbd.jpg",
+      "/images/yuantiao.jpg",
+      "images/yuantiao.jpg",
+      "images/cbd.jpg",
+      "images/sou.png",
+      "images/logo.png"
+    ],
+    "refer": []
+  },
+  "addresslist.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "css/mui.indexedlist.css",
+      "js/mui.indexedlist.js"
+    ],
+    "refer": []
+  },
+  "person1.html": {
+    "resources": [
+      "images/logo.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "person2.html": {
+    "resources": [
+      "images/logo.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "main.html": {
+    "resources": [
+      "fonts/mui-icons-extra.ttf",
+      "js/iconfont.js",
+      "fonts/mui.ttf",
+      "css/iconfont.css",
+      "css/icons-extra.css",
+      "chatlist.html",
+      "js/wsconnect.js",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "index.html",
+      "tab-webview-subpage-setting.html",
+      "addresslist.html",
+      "chatlist.html",
+      "person2.html",
+      "person1.html",
+      "verify.html",
+      "im-chat.html",
+      "me.html",
+      "circle.html"
+    ]
+  },
+  "chatlist.html": {
+    "resources": [
+      "images/logo.png",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "input.html",
+      "im-chat.html",
+      "person2.html",
+      "person1.html",
+      "rim-chat.html"
+    ]
+  },
+  "verify.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "rim-chat.html": {
+    "resources": [
+      "css/app.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.imageviewer.css",
+      "js/mui.imageViewer.js",
+      "js/mui.min.js",
+      "js/arttmpl.js",
+      "images/logo.png"
+    ],
+    "refer": []
+  },
+  "me.html": {
+    "resources": [
+      "images/logo.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/logo.png"
+    ],
+    "refer": [
+      "setting.html",
+      "infosetting.html"
+    ]
+  },
+  "setting.html": {
+    "resources": [
+      "css/feedback.css",
+      "img/logo.png",
+      "js/feedback.js",
+      "js/mui.view.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "infosetting.html": {
+    "resources": [
+      "js/mui.view.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/logo11.png"
+    ],
+    "refer": [
+      "cut.html"
+    ]
+  },
+  "cut.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/touch.min.js",
+      "img/b3.jpg"
+    ],
+    "refer": []
+  }
 }
