@@ -7,6 +7,9 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="css/mui.min.css" rel="stylesheet" />
 
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.poppicker.css" />
+
 		<style>
 			html,
 			body {
@@ -215,6 +218,74 @@
 				margin-top: 0px;
 			}
 			/*问题反馈在setting页面单独的css==end*/
+			
+			.mui-table-view-cell:after {
+				right: 15px;
+			}
+		</style>
+
+		<!--提示框-->
+		<style type="text/css">
+			.mui-popup {
+				border-radius: 1px;
+			}
+			
+			.mui-popup-inner {
+				padding: 20px 15px 15px 15px;
+				border-radius: 1px;
+			}
+			
+			.mui-popup-button:first-child,
+			.mui-popup-button:last-child {
+				border-radius: 0;
+			}
+			
+			.mui-popup-button.mui-popup-button-bold {
+				font-weight: normal;
+			}
+			
+			.mui-popup-button {
+				font-size: 17px;
+				line-height: 44px;
+				position: static;
+				display: block;
+				overflow: hidden;
+				box-sizing: border-box;
+				width: 100%;
+				height: 44px;
+				padding: 0 30px;
+				cursor: pointer;
+				text-align: left;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				color: #000;
+				background: rgba(255, 255, 255, .95);
+				font-weight: 500;
+				-webkit-box-flex: 1;
+			}
+			
+			.mui-popup-buttons {
+				height: 88px;
+				display: block;
+			}
+			
+			.mui-popup-title {
+				font-weight: 0;
+				text-align: left;
+				font-weight: 600;
+			}
+			
+			.mui-popup-button:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 15px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc
+			}
 		</style>
 
 	</head>
@@ -269,33 +340,119 @@
 								</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>昵称<span class="mui-pull-right">MangoMan</span></a>
+								<a href="#modinickname">昵称<span class="mui-pull-right">MangoMan</span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>y号<span class="mui-pull-right">yx_whyhaoba</span></a>
+								<a href="#setynum">y号<span class="mui-pull-right">yx_whyhaoba</span></a>
 							</li>
 						</ul>
 
 						<ul class="mui-table-view">
 							<li class="mui-table-view-cell">
-								<a>性别<span class="mui-pull-right">男</span></a>
+								<a id="sex">性别<span class="mui-pull-right">男</span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>地区<span class="mui-pull-right">湖南 长沙</span></a>
+								<a id="area">地区<span class="mui-pull-right">湖南 长沙</span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a>个性签名<span class="mui-pull-right">啊哈哈哈</span></a>
+								<a href="#signature">个性签名<span class="mui-pull-right">啊哈哈哈</span></a>
 							</li>
-
 						</ul>
 
 					</div>
 				</div>
 			</div>
+
 		</div>
+
+		<div id="modinickname" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav" style="background-color: #2c2c2c;">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-title ">  <span class="mui-pull-left" style=" color: #fff; font-size: 18px; font-family: '微软雅黑';">&nbsp; 更改名字</span></h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" style="padding: 10px 10px;">
+						<!--<ul class="mui-table-view">-->
+						<!--<li class="mui-table-view-cell">-->
+
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="text" style="background-color: #efeff4;">
+							</div>
+						</form>
+
+						<p style="margin-top: 10px;">写个好名字吧！</p>
+						<!--</li>-->
+
+						<!--</ul>-->
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="setynum" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav" style="background-color: #2c2c2c;">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-title ">  <span class="mui-pull-left" style=" color: #fff; font-size: 18px; font-family: '微软雅黑';">&nbsp; 设置y号</span></h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" style="padding: 10px 10px;">
+						<!--<ul class="mui-table-view">-->
+						<!--<li class="mui-table-view-cell">-->
+
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="text" style="background-color: #efeff4;">
+							</div>
+						</form>
+
+						<p style="margin-top: 10px;">注意，y号设置后不可再更改！</p>
+						<!--</li>-->
+
+						<!--</ul>-->
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		<div id="signature" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav" style="background-color: #2c2c2c;">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-title ">  <span class="mui-pull-left" style=" color: #fff; font-size: 18px; font-family: '微软雅黑';">&nbsp; 个性签名</span></h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" style="padding: 10px 10px;">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="text" style="background-color: #efeff4;">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		
 
 		<script src="js/mui.min.js "></script>
 		<script src="js/mui.view.js "></script>
+		<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.picker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init({
 				preloadPages: [{
@@ -315,6 +472,15 @@
 
 			mui.plusReady(function() {
 
+				var oldBack = mui.back;
+				mui.back = function() {
+					if(viewApi.canBack()) {
+						viewApi.back();
+					} else {
+						oldBack();
+					}
+				};
+
 				document.getElementById("head").addEventListener('tap', function() {
 					mui('#sheet1').popover('toggle');
 				});
@@ -331,23 +497,21 @@
 							mui.fire(plus.webview.getWebviewById('cut.html'), 'loadimgsrc', {
 								imgsrc: path
 							});
-							
-							setTimeout(function () {
+
+							setTimeout(function() {
 								mui.openWindow({
-								id: 'cut.html',
-								url: 'cut.html',
-								show: {
-									aniShow: 'pop-in',
-									duration: 300
-								},
-								waiting: {
-									autoShow: false,
-									event:'loaded'
-								}
-							});
-							},500);
-							
-							
+									id: 'cut.html',
+									url: 'cut.html',
+									show: {
+										aniShow: 'pop-in',
+										duration: 300
+									},
+									waiting: {
+										autoShow: false,
+										event: 'loaded'
+									}
+								});
+							}, 500);
 
 						});
 
@@ -362,20 +526,20 @@
 								imgsrc: path
 							})
 
-							setTimeout(function () {
+							setTimeout(function() {
 								mui.openWindow({
-								id: 'cut.html',
-								url: 'cut.html',
-								show: {
-									aniShow: 'pop-in',
-									duration: 300
-								},
-								waiting: {
-									autoShow: false,
-									event:'loaded'
-								}
-							});
-							},500);
+									id: 'cut.html',
+									url: 'cut.html',
+									show: {
+										aniShow: 'pop-in',
+										duration: 300
+									},
+									waiting: {
+										autoShow: false,
+										event: 'loaded'
+									}
+								});
+							}, 500);
 
 						}, function(err) {
 							console.log(JSON.stringify(err));
@@ -386,7 +550,6 @@
 
 					}
 
-
 					//根据点击按钮，反推当前是哪个actionsheet
 					for(parent = a.parentNode; parent != document.body; parent = parent.parentNode) {
 						if(parent.classList.contains('mui-popover-action')) {
@@ -396,7 +559,41 @@
 					//关闭actionsheet
 					mui('#' + parent.id).popover('toggle');
 					//					info.innerHTML = "你刚点击了\"" + a.innerHTML + "\"按钮";
-				})
+				});
+
+				document.getElementById("sex").addEventListener('click', function() {
+
+					var btnArray = ['男', '女'];
+					mui.confirm('', '性别', btnArray, function(e) {
+
+						console.log(JSON.stringify(e));
+
+						if(e.index == 1) {
+							console.log("1");
+						} else {
+							console.log("2");
+						}
+					}, 'div')
+
+				});
+
+				var cityPicker = new mui.PopPicker({
+					layer:2
+				});
+
+				cityPicker.setData(cityData);
+
+				document.getElementById("area").addEventListener('tap', function() {
+
+					cityPicker.show(function(items) {
+
+						document.querySelector("#area > span").innerHTML = items[0].text + " " + items[1].text;
+						//							cityResult.innerText = "你选择的城市是:" + items[0].text + " " + items[1].text;
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+
+					});
+				});
 
 			});
 		</script>

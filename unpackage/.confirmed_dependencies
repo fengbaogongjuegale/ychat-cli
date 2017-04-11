@@ -266,7 +266,12 @@
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css",
-      "img/logo11.png"
+      "img/logo11.png",
+      "js/city.data.js",
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css"
     ],
     "refer": [
       "cut.html"
