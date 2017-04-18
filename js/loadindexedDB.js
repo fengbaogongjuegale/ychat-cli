@@ -39,7 +39,7 @@ var iDB = (function() {
 	 * @param {Object} key 
 	 * @param {Object} success_callback
 	 */
-	function getChatLog(key, success_callback) {
+	function _getChatLog(key, success_callback) {
 		var tx = _db.transaction('chatlog', 'readonly');
 		var store = tx.objectStore('chatlog');
 		var index = store.index("source");
@@ -64,7 +64,7 @@ var iDB = (function() {
 	 * 用户登陆后加载聊天列表
 	 * @param {Object} success_callback
 	 */
-	function getChatList(success_callback) {
+	function _getChatList(success_callback) {
 		var tx = _db.transaction('chatlist', 'readonly');
 		var store = tx.objectStore('chatlist');
 		var logs = [];
@@ -84,7 +84,7 @@ var iDB = (function() {
 	 * @param {Object} cl
 	 * @param {Object} complete_callback
 	 */
-	function saveChatList(cl,complete_callback) {
+	function _saveChatList(cl,complete_callback) {
 		var transaction = db.transaction('chatlist', 'readwrite');
 		var store = transaction.objectStore('chatlist');
 		store.clear();
@@ -102,13 +102,17 @@ var iDB = (function() {
 	/**
 	 *获取联系人列表 
 	 */
-	function getContactList(){
+	function _getContactList(){
 		
 	}
 	
 
 	return {
 		initDb: _initDb,
-		db: _db
+//		db: _db,
+		getChatlog:_getChatLog,
+		getChatList:_getChatList,
+		saveChatList:_saveChatList,
+		getContactListL:_getContactList
 	};
 })();

@@ -340,10 +340,10 @@
 								</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a href="#modinickname">昵称<span class="mui-pull-right">MangoMan</span></a>
+								<a id="nickname" href="#modinickname">昵称<span class="mui-pull-right">MangoMan</span></a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a href="#setynum">y号<span class="mui-pull-right">yx_whyhaoba</span></a>
+								<a id="ynum" href="#setynum">y号<span class="mui-pull-right">yx_whyhaoba</span></a>
 							</li>
 						</ul>
 
@@ -480,6 +480,16 @@
 						oldBack();
 					}
 				};
+				
+				window.addEventListener('loaddata',function  (e) {
+					var data = e.detail;
+					
+					document.querySelector("#nickname > span").innerHTML = data.nickname;
+//					document.querySelector("#ynum > span").innerHTML = data.ynum;
+					document.querySelector("#sex > span").innerHTML = data.sex;
+//					document.querySelector("#area > span").innerHTML = data.area;
+					
+				});
 
 				document.getElementById("head").addEventListener('tap', function() {
 					mui('#sheet1').popover('toggle');

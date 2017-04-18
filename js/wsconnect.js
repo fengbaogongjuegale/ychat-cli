@@ -51,6 +51,13 @@ function onmessage(e) {
 		case 'ping':
 			ws.send('{"type":"pong"}');
 			break;
+			
+		case 'loginsuccess':
+		
+		localStorage.setItem('userinfo'+localStorage.getItem('uid'),JSON.stringify(data));
+		
+		break;
+			
 		case 'searchuserinfo':
 		
 		if(!data['issuccess']){

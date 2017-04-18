@@ -21,23 +21,23 @@
 			<h1 class="mui-title ">  <span class="mui-pull-left" style=" color: #fff; font-size: 18px; font-family: '微软雅黑';">&nbsp;&nbsp; 添加朋友</span></h1>
 		</header>
 		<div class="mui-content">
-					<ul class="mui-table-view mui-table-view-chevron">
-						<li class="mui-table-view-cell mui-media">
-							<a class="mui-navigate-right" id="account">
-								<img class="mui-media-object mui-pull-left head-img" id="head-img" src="img/logo.png">
-								<div class="mui-media-body">
-									Hello MUI
-									<p class='mui-ellipsis'>账号:hellomui</p>
-								</div>
-							</a>
-						</li>
-					</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="account">
+						<img class="mui-media-object mui-pull-left head-img" id="head-img" src="img/logo.png">
+						<div id="lnickname" class="mui-media-body">
+							Hello MUI
+							<p id="laccount" class='mui-ellipsis'>账号:hellomui</p>
+						</div>
+					</a>
+				</li>
+			</ul>
 
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell">
-							<a id="setting"><span class="mui-icon mui-icon-gear" style="margin-right: 10px;"></span>设置</a>
-						</li>
-					</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a id="setting"><span class="mui-icon mui-icon-gear" style="margin-right: 10px;"></span>设置</a>
+				</li>
+			</ul>
 		</div>
 
 		</div>
@@ -48,17 +48,26 @@
 				preloadPages: [{
 					id: 'infosetting.html',
 					url: 'infosetting.html'
-				}
-				]
+				}]
 			});
+
+			window.addEventListener('loaddata', function(e) {
+				
+				var data = JSON.parse(localStorage.getItem('userinfo' + localStorage.getItem('uid')));
+				
+				document.getElementById("lnickname").innerHTML = data.nickname;
+				document.getElementById("laccount").innerHTML = data.account;
+				
+						
+			})
 
 			document.getElementById('setting').addEventListener('tap', function() {
 				console.log('setting');
-				
-				if(!plus.webview.getWebviewById('setting.html')){
+
+				if(!plus.webview.getWebviewById('setting.html')) {
 					console.log('not');
 				};
-				
+
 				//不能预加载
 				mui.openWindow({
 					url: 'setting.html',
@@ -74,21 +83,22 @@
 					}
 				});
 			});
-			
-			document.getElementById('account').addEventListener('tap',function  () {
+
+			document.getElementById('account').addEventListener('tap', function() {
 				mui.openWindow({
-				id: 'infosetting.html',
-				url: 'infosetting.html',
-				show: {
-					aniShow: 'pop-in',
-					duration: 300
-				},
-				waiting: {
-					autoShow: false
-				}
+					id: 'infosetting.html',
+					url: 'infosetting.html',
+					show: {
+						aniShow: 'pop-in',
+						duration: 300
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+
 			});
-											
-			});
+			
 		</script>
 	</body>
 
