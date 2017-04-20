@@ -30,10 +30,10 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">indexed list（索引列表）</h1>
-		</header>
+		</header>-->
 		
 		<div id="popover" class="mui-popover">
 			<ul id="5list" class="mui-table-view">
@@ -110,7 +110,16 @@
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.indexedlist.js"></script>
+		
+		
+		
 		<script type="text/javascript" charset="utf-8">
+		
+		/*
+		 * 通讯录。登录之后从服务器读取联系人信息存入indexedDB，另一方面主页面传消息预加载联系人页面。（同时还有预加载个人页面）
+		 */
+		
+		
 			mui.init();
 			mui.ready(function() {
 				var header = document.querySelector('header.mui-bar');
