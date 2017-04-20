@@ -62,8 +62,6 @@
 
 		</div>
 		
-		
-		
 		<div class="mui-content">
 			<button id="bbb">bbb</button>
 			<div id='list' class="mui-indexed-list">
@@ -110,7 +108,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.indexedlist.js"></script>
 		<script type="text/javascript" charset="utf-8">
@@ -122,16 +119,14 @@
 				list.style.height = (document.body.offsetHeight) + 'px';
 				//create
 				window.indexedList = new mui.IndexedList(list);
-				
-				
-			});
+								
+			}); 
 			
 			mui.plusReady(function(){
 				window.addEventListener('popo', function(event) {
 				console.log('popo in 2');
 				mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
 			});
-			
 			
 			window.addEventListener('addfri', function(event) {
 				var list = document.getElementById("frilist");

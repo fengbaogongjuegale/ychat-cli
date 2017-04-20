@@ -9,7 +9,7 @@
 	 **/
 	owner.login = function(loginInfo, callback) {
 		console.log('login..............................................');
-		ws = new WebSocket("ws://"+"192.168.1.100"+":7272");
+//		ws = new WebSocket("ws://"+"192.168.1.100"+":7272");
 		callback = callback || $.noop;
 		loginInfo = loginInfo || {};
 		loginInfo.account = loginInfo.account || '';
@@ -22,7 +22,7 @@
 		//			return callback('密码最短为 6 个字符');
 		//		}
 		
-//		return callback();
+		return callback();/////////////////////////
 		
 //		var issuccess;
 console.log('sss');

@@ -207,7 +207,7 @@
 					case 'groupc':
 						//						console.log('groupc');
 						mui.fire(plus.webview.currentWebview(), 'addli', {
-							img: "images/logo.png",
+							img: "img/logo.png",
 							title: "aaa",
 							time: "bbb",
 							content: "ccc",
@@ -253,7 +253,7 @@
 				anode.id = data['title'];
 				var imgnode = document.createElement("img");
 				imgnode.className = "mui-media-object mui-pull-left";
-				imgnode.src = "images/logo.png";
+				imgnode.src = "img/logo.png";
 				var divnode = document.createElement("div");
 				divnode.className = "mui-media-body liitemdiv";
 				var textnode = document.createTextNode(data['title']);
@@ -300,7 +300,8 @@
 						id: 'im-chat.html',
 						preload: true,
 						show: {
-							aniShow: 'pop-in'
+							aniShow: 'pop-in',
+							duration:300
 						},
 						styles: {
 							popGesture: 'hide'
@@ -347,7 +348,7 @@
 				var anode = document.createElement("a");
 				var imgnode = document.createElement("img");
 				imgnode.className = "mui-media-object mui-pull-left";
-				imgnode.src = data['imgsrc'] || 'images/logo.png';
+				imgnode.src = data['imgsrc'] || 'img/logo.png';
 				var divnode = document.createElement("div");
 				divnode.className = "mui-media-body liitemdiv";
 				var textnode = document.createTextNode(data['title']);
@@ -398,7 +399,8 @@
 						id: 'person2.html',
 						preload: true,
 						show: {
-							aniShow: 'pop-in'
+							aniShow: 'pop-in',
+							duration:300
 						},
 						styles: {
 							popGesture: 'hide'

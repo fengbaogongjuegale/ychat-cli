@@ -345,7 +345,8 @@
 					"images/yuantiao.jpg",
 					"images/cbd.jpg",
 					"images/sou.png",
-					"images/logo.png"
+					"images/logo.png",
+					"img/sou.jpg"
 				],
 				"refer": [],
 				"priority": 0
@@ -402,7 +403,8 @@
 					"verify.html",
 					"im-chat.html",
 					"me.html",
-					"circle.html"
+					"circle.html",
+					"contactlist.html"
 				],
 				"priority": 0
 			},
@@ -411,7 +413,8 @@
 					"images/logo.png",
 					"js/mui.min.js",
 					"css/mui.min.css",
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"img/logo.png"
 				],
 				"refer": [
 					"input.html",
@@ -483,7 +486,8 @@
 					"js/mui.picker.js",
 					"js/mui.poppicker.js",
 					"css/mui.poppicker.css",
-					"css/mui.picker.css"
+					"css/mui.picker.css",
+					"infosetting.html"
 				],
 				"refer": [
 					"cut.html"
@@ -497,6 +501,25 @@
 					"css/mui.min.css",
 					"js/touch.min.js",
 					"img/b3.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"contactlist.html": {
+				"resources": [
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"circle.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
