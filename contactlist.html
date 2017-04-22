@@ -13,10 +13,12 @@
 				height: 100%;
 				overflow: hidden;
 			}
+			
 			.mui-bar {
 				-webkit-box-shadow: none;
 				box-shadow: none;
 			}
+			
 			.mui-backdrop {
 				position: fixed;
 				top: 0;
@@ -34,7 +36,7 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">indexed list（索引列表）</h1>
 		</header>-->
-		
+
 		<div id="popover" class="mui-popover">
 			<ul id="5list" class="mui-table-view">
 				<li class="mui-table-view-cell" value="groupc"><span class="mui-icon mui-icon-chatboxes"></span>发起群聊</li>
@@ -42,7 +44,7 @@
 			</ul>
 
 		</div>
-		
+
 		<div class="mui-row" style="top: -12px; left: auto; right: 0px; position:fixed; ">
 			<div class="mui-col-sm-5 mui-col-xs-5">
 
@@ -61,7 +63,7 @@
 			</div>
 
 		</div>
-		
+
 		<div class="mui-content">
 			<button id="bbb">bbb</button>
 			<div id='list' class="mui-indexed-list">
@@ -97,68 +99,157 @@
 					<a>Z</a>
 					<a>#</a>
 				</div>
-				
+
 				<div class="mui-indexed-list-alert"></div>
 				<div class="mui-indexed-list-inner">
 					<div class="mui-indexed-list-empty-alert">没有数据</div>
-					<ul  id="frilist" class="mui-table-view">
+					<ul id="frilist" class="mui-table-view">
 						<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
-						<li data-value="AG" data-tags="BaoShan" class="mui-table-view-cell mui-indexed-list-item">阿猫</li>
+						<li data-value="AM" data-tags="AMAO" class="mui-table-view-cell mui-indexed-list-item">阿猫</li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.indexedlist.js"></script>
-		
+		<script src="js/arttmpl.js"></script>
+		<script src="js/pinyin.js"></script>
+		<script id='contactlist-template' type="text/template">
+			<%var gourp = ""; for(var i in record){ var item=record[i]; %>
+				
+				<%  if(gourp!=item.tag[0]){ gourp = item.tag[0];%>
+					<li data-group="<%= gourp%>" class="mui-table-view-divider mui-indexed-list-group"><%= gourp%></li>
+					<%}%>
+				<li data-value="<%= item.v%>" data-tags="<%= item.tag%>" class="mui-table-view-cell mui-indexed-list-item"><%= item.name%></li>	
+				
+			<% } %>
+		</script>
 		
 		
 		<script type="text/javascript" charset="utf-8">
-		
-		/*
-		 * 通讯录。登录之后从服务器读取联系人信息存入indexedDB，另一方面主页面传消息预加载联系人页面。（同时还有预加载个人页面）
-		 */
-		
-		
+			/*
+									 * 通讯录。登录之后从服务器读取联系人信息存入indexedDB，另一方面主页面传消息预加载联系人页面。（同时还有预加载个人页面）
+									 * 数据源格式为json格式，根据value值进行排序。
+									 * 排序结束后用模板渲染。
+									 * 例：
+									 * var data = [{
+										v: "AKU",
+										tag: "AKeSu",
+										name: "阿克苏机场"
+									},
+									{
+										v: "BPL",
+										tag: "ALaShanKou",
+										name: "阿拉山口机场"
+									},
+									{
+										v: "AAT",
+										tag: "ALeTai",
+										name: "阿勒泰机场"
+									},
+									{
+										v: "NGQ",
+										tag: "ALiKunSha",
+										name: "阿里昆莎机场"
+									}
+								];
+									 */
+
+			function JsonSort(json, key) {
+				//console.log(json);
+				for(var j = 1, jl = json.length; j < jl; j++) {
+					var temp = json[j],
+						val = temp[key],
+						i = j - 1;
+					while(i >= 0 && json[i][key] > val) {
+						json[i + 1] = json[i];
+						i = i - 1;
+					}
+					json[i + 1] = temp;
+
+				}
+				//console.log(json);
+				return json;
+			}
+			//			var json = JsonSort(data, 'v');
+
 			mui.init();
+
+			template.config('escape', false);
+
 			mui.ready(function() {
+
 				var header = document.querySelector('header.mui-bar');
 				var list = document.getElementById('list');
 				//calc hieght
 				list.style.height = (document.body.offsetHeight) + 'px';
 				//create
 				window.indexedList = new mui.IndexedList(list);
-								
-			}); 
-			
-			mui.plusReady(function(){
+
+			});
+
+			mui.plusReady(function() {
+				var data = [{
+						v: "AKU",
+						tag: "AKeSu",
+						name: "阿克苏机场"
+					},
+					{
+						v: "BPL",
+						tag: "ALaShanKou",
+						name: "阿拉山口机场"
+					},
+					{
+						v: "AAT",
+						tag: "ALeTai",
+						name: "阿勒泰机场"
+					},
+					{
+						v: "NGQ",
+						tag: "ALiKunSha",
+						name: "阿里昆莎机场"
+					}
+				];
+
 				window.addEventListener('popo', function(event) {
-				console.log('popo in 2');
-				mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
-			});
-			
-			window.addEventListener('addfri', function(event) {
-				var list = document.getElementById("frilist");
-				console.log('addfri in 2');
-				var data = event.detail;				
-//				var nickname = data['nickname'];
-				var nickname = '王小明';
-				var node = document.createElement("LI");
-				node.className = "mui-table-view-cell mui-indexed-list-item";
-				node.setAttribute('data-value',"WXM");
-				node.setAttribute('data-tags',"wangxiaoming");
-				var textnode = document.createTextNode("王小明");
-				node.appendChild(textnode);
-				list.appendChild(node);
-			});
-			
-			var bb = document.getElementById('bbb');
-			bb.addEventListener("tap",function() {
-				console.log("bb");
-			mui.trigger(window,"addfri",null);
-				
-			});
-			
+					console.log('popo in 2');
+					mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
+				});
+
+				window.addEventListener('addfri', function(event) {
+					var list = document.getElementById("frilist");
+					console.log('addfri in 2');
+					var data = event.detail;
+					//				var nickname = data['nickname'];
+					var nickname = '王小明';
+					var node = document.createElement("LI");
+					node.className = "mui-table-view-cell mui-indexed-list-item";
+					node.setAttribute('data-value', "WXM");
+					node.setAttribute('data-tags', "wangxiaoming");
+					var textnode = document.createTextNode("王小明");
+					node.appendChild(textnode);
+					list.appendChild(node);
+				});
+
+				var bb = document.getElementById('bbb');
+				bb.addEventListener("tap", function() {
+					//								console.log("bb");
+					//							mui.trigger(window,"addfri",null);
+
+					//console.log(template('contactlist-template', {
+					//							"record": data
+					//						}));
+					document.getElementById("frilist").innerHTML = template('contactlist-template', {
+						"record": data
+					});
+					
+					console.log(template('contactlist-template', {
+						"record": data
+					}));
+
+				});
+
 			});
 		</script>
 	</body>

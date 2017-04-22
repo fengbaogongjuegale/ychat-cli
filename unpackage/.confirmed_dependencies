@@ -298,7 +298,8 @@
 			"js/mui.indexedlist.js",
 			"js/mui.min.js",
 			"fonts/mui.ttf",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"js/arttmpl.js"
 		]
 	},
 	"circle.html": {
