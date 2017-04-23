@@ -231,6 +231,18 @@
 					node.appendChild(textnode);
 					list.appendChild(node);
 				});
+				
+				
+				window.addEventListener('loaddata',function (e) {
+					var data = e.detail;
+					//传过来这里就少引一个文件。数据库。更新的化也是。确认新好友就传过来。
+					//数据过了的时候[{},{},{},{},{}...]
+					
+					
+					
+					
+				});
+				
 
 				var bb = document.getElementById('bbb');
 				bb.addEventListener("tap", function() {
